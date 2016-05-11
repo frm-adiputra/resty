@@ -5,7 +5,7 @@ import (
 	"regexp"
 	"strings"
 
-	"bitbucket.org/frm_adiputra/ukt2016/resty/assets"
+	"github.com/frm-adiputra/resty/assets"
 )
 
 var (
