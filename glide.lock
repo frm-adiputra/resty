@@ -1,0 +1,30 @@
+hash: 14298dfc73ecb00d099b948753cafa7e12be313b1de190fceb713e1ed5920205
+updated: 2016-05-11T21:48:32.560437591+07:00
+imports:
+- name: github.com/go-openapi/analysis
+  version: 5a8fe2138f95138797c306c07e65e759c55f898f
+- name: github.com/go-openapi/jsonpointer
+  version: f5133566e18f23f2085d953998fd72959b698623
+- name: github.com/go-openapi/jsonreference
+  version: 44d0c05f81b60f99eeb8c188b8983ec82e5d872f
+- name: github.com/go-openapi/loads
+  version: 1713bb237996758885e6c3cee6ed7981644abf41
+- name: github.com/go-openapi/runtime
+  version: ad736e5a94df13f128be7b5057606a537c020707
+- name: github.com/go-openapi/spec
+  version: 1f40fcb077ed32379da3eeb494f76fb2285e31b8
+- name: github.com/go-openapi/strfmt
+  version: 66a99d45c3043d45d346b1c8db5dc2f76a004869
+- name: github.com/go-openapi/swag
+  version: 617a8d12ee0e06e17b3fc95af7a14dd0f514e636
+- name: github.com/go-openapi/validate
+  version: f9db1b89d08ead629cde1e6cab275c329fe89bed
+- name: github.com/opennota/urlesc
+  version: 5fa9ff0392746aeae1c4b37fcc42c65afa7a9587
+- name: github.com/PuerkitoBio/purell
+  version: d69616f51cdfcd7514d6a380847a152dfc2a749d
+- name: github.com/stretchr/testify
+  version: 6cb3b85ef5a0efef77caef88363ec4d4b5c0976d
+  subpackages:
+  - assert
+devImports: []
