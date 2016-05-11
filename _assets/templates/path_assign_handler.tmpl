@@ -1,0 +1,5 @@
+{{define "PATH_ASSIGN_HANDLER"}}
+  {{range $k, $v := .Methods}}
+    mux.{{upperCase $k}}({{dencoPath .Path}}, {{.OperationID}})
+  {{end}}
+{{end}}

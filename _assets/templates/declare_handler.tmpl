@@ -1,0 +1,11 @@
+{{define "DECLARE_HANDLER"}}
+// Handlers variable contains all handler for this API.
+// Fields int the Handlers sruct format are generated from `operationId`.
+var Handlers = struct {
+    {{range $tag, $ := .OperationIDByTag}}
+    // {{$tag}}
+    {{- range $id, $ := .}}
+    {{upperCaseFirstLetter $id}} mwchain.Handler{{end}}
+    {{end}}
+}{}
+{{end}}

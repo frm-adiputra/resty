@@ -1,0 +1,36 @@
+{{define "DENCO_ROUTES"}}
+{{range $tag, $ := .OperationByTagAndPathAndMethod}}
+// {{$tag}}
+{{range $path, $ := . -}}
+{{- with .GET}}mux.GET(prefix+"{{dencoPath $path}}", toDenco(Handlers.{{upperCaseFirstLetter .ID}})),
+{{end}}
+{{- with .PUT}}mux.PUT(prefix+"{{dencoPath $path}}", toDenco(Handlers.{{upperCaseFirstLetter .ID}})),
+{{end}}
+{{- with .POST}}mux.POST(prefix+"{{dencoPath $path}}", toDenco(Handlers.{{upperCaseFirstLetter .ID}})),
+{{end}}
+{{- with .DELETE}}mux.DELETE(prefix+"{{dencoPath $path}}", toDenco(Handlers.{{upperCaseFirstLetter .ID}})),
+{{end}}
+{{- with .OPTIONS}}mux.OPTIONS(prefix+"{{dencoPath $path}}", toDenco(Handlers.{{upperCaseFirstLetter .ID}})),
+{{end}}
+{{- with .HEAD}}mux.HEAD(prefix+"{{dencoPath $path}}", toDenco(Handlers.{{upperCaseFirstLetter .ID}})),
+{{end}}
+{{- with .PATCH}}mux.PATCH(prefix+"{{dencoPath $path}}", toDenco(Handlers.{{upperCaseFirstLetter .ID}})),
+{{end}}
+{{- end}}
+{{- end}}
+{{- end}}
+
+
+{{define "HANDLER_FUNC_DECL"}}
+// Handler returns the http handler for this API.
+func Handler(prefix string) (http.Handler, error) {
+	mux := denco.NewMux()
+	handler, err := mux.Build([]denco.Handler{ {{- template "DENCO_ROUTES" .}}
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	return handler, nil
+}
+{{end}}

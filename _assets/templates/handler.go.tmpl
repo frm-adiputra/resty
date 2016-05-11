@@ -1,0 +1,31 @@
+package api
+
+import (
+	"net/http"
+
+	"golang.org/x/net/context"
+
+	"github.com/frm-adiputra/mwchain"
+
+	"github.com/naoina/denco"
+)
+
+{{template "DECLARE_HANDLER" .}}
+
+{{template "HANDLER_FUNC_DECL" .}}
+
+func toDenco(h mwchain.Handler) func(http.ResponseWriter, *http.Request, denco.Params) {
+	if h == nil {
+		return func(w http.ResponseWriter, r *http.Request, params denco.Params) {
+			http.Error(w, http.StatusText(http.StatusNotImplemented), http.StatusNotImplemented)
+		}
+	}
+	return func(w http.ResponseWriter, r *http.Request, params denco.Params) {
+		ctx := newParamsContext(context.Background(), params)
+		h.ServeHTTP(ctx, w, r)
+	}
+}
+
+func newParamsContext(ctx context.Context, params denco.Params) context.Context {
+	return context.WithValue(ctx, "req.params", params)
+}
